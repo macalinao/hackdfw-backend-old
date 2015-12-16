@@ -6,7 +6,6 @@ parallelExecution in ThisBuild := false
 
 lazy val versions = new {
   val finatra = "2.1.2"
-  val guice = "4.0"
   val logback = "1.0.13"
 }
 
@@ -18,6 +17,10 @@ resolvers ++= Seq(
 assemblyMergeStrategy in assembly := {
   case "BUILD" => MergeStrategy.discard
   case other => MergeStrategy.defaultMergeStrategy(other)
+}
+
+unmanagedResourceDirectories in Compile += {
+  baseDirectory.value / "src/main/webapp"
 }
 
 libraryDependencies ++= Seq(
@@ -33,7 +36,6 @@ libraryDependencies ++= Seq(
   "com.twitter.inject" %% "inject-app" % versions.finatra % "test",
   "com.twitter.inject" %% "inject-core" % versions.finatra % "test",
   "com.twitter.inject" %% "inject-modules" % versions.finatra % "test",
-  "com.google.inject.extensions" % "guice-testlib" % versions.guice % "test",
 
   "com.twitter.finatra" %% "finatra-http" % versions.finatra % "test" classifier "tests",
   "com.twitter.finatra" %% "finatra-jackson" % versions.finatra % "test" classifier "tests",

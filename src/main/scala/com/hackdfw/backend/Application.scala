@@ -1,6 +1,6 @@
 package com.hackdfw.backend
 
-import com.hackdfw.backend.controllers.UsersController
+import com.hackdfw.backend.controllers.{RootController, UsersController}
 import com.twitter.finagle.http.{Response, Request}
 import com.twitter.finatra.http.HttpServer
 import com.twitter.finatra.http.filters.CommonFilters
@@ -19,6 +19,8 @@ class ApplicationServer extends HttpServer {
       .filter[LoggingMDCFilter[Request, Response]]
       .filter[TraceIdMDCFilter[Request, Response]]
       .filter[CommonFilters]
+
+      .add[RootController]
       .add[UsersController]
   }
 
