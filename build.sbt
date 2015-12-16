@@ -4,6 +4,8 @@ version := "0.1.0-SNAPSHOT"
 scalaVersion := "2.11.7"
 parallelExecution in ThisBuild := false
 
+enablePlugins(JavaServerAppPackaging)
+
 lazy val versions = new {
   val finatra = "2.1.2"
   val logback = "1.0.13"
@@ -46,4 +48,5 @@ libraryDependencies ++= Seq(
 
   "org.mockito" % "mockito-core" % "1.9.5" % "test",
   "org.scalatest" %% "scalatest" % "2.2.3" % "test",
-  "org.specs2" %% "specs2" % "2.3.12" % "test")
+  "org.specs2" %% "specs2" % "2.3.12" % "test"
+)
