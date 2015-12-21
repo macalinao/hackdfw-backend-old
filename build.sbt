@@ -33,8 +33,11 @@ libraryDependencies ++= Seq(
   "com.twitter.inject" %% "inject-core" % versions.finatra,
   "ch.qos.logback" % "logback-classic" % versions.logback,
 
+  "org.postgresql" % "postgresql" % "9.4-1206-jdbc42",
   "com.typesafe.slick" %% "slick" % "3.1.1",
   "org.slf4j" % "slf4j-nop" % "1.6.4",
+  "com.github.tminglei" %% "slick-pg" % "0.10.2",
+  "org.json4s" %% "json4s-jackson" % "3.3.0",
 
   "com.twitter.finatra" %% "finatra-http" % versions.finatra % "test",
   "com.twitter.finatra" %% "finatra-jackson" % versions.finatra % "test",
