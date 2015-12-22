@@ -23,5 +23,11 @@ class User(tag: Tag) extends Table[(Int, String, Option[String], Option[String],
 
 }
 
-object Users extends TableQuery(new User(_))
+object Users extends TableQuery(new User(_)) {
+
+  def confirmedUser(email: String, confirmationToken: String): Option[User] = {
+    None
+  }
+
+}
 
