@@ -7,7 +7,7 @@ import org.json4s.jackson.JsonMethods
 
 object DB {
 
-  val url = "jdbc:" + Option(System.getenv("HEROKU_POSTGRESQL_CRIMSON_URL")).getOrElse("postgres://localhost")
+  val url = Option(System.getenv("JDBC_DATABASE_URL")).getOrElse("jdbc:postgresql://localhost/hackdfw_backend_devel")
 
   val connection = Database.forURL(url, driver = "org.postgresql.Driver")
 
@@ -21,6 +21,7 @@ trait MyPostgresDriver extends ExPostgresDriver with PgJson4sSupport {
   override val api = MyAPI
 
   object MyAPI extends API with JsonImplicits
+
 }
 
 object MyPostgresDriver extends MyPostgresDriver
