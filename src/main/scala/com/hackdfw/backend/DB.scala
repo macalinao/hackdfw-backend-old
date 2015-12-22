@@ -1,6 +1,6 @@
 package com.hackdfw.backend
 
-import com.github.tminglei.slickpg.{PgJson4sSupport, ExPostgresDriver}
+import com.github.tminglei.slickpg.{PgDateSupport, PgJson4sSupport, ExPostgresDriver}
 import org.json4s.JsonAST.JValue
 import slick.driver.PostgresDriver.api._
 import org.json4s.jackson.JsonMethods
@@ -13,14 +13,16 @@ object DB {
 
 }
 
-trait MyPostgresDriver extends ExPostgresDriver with PgJson4sSupport {
+trait MyPostgresDriver extends ExPostgresDriver
+  with PgJson4sSupport with PgDateSupport {
 
   def pgjson = "jsonb"
   type DOCType = JValue
   val jsonMethods = JsonMethods
   override val api = MyAPI
 
-  object MyAPI extends API with JsonImplicits
+  object MyAPI extends API
+    with JsonImplicits with DateTimeImplicits
 
 }
 
