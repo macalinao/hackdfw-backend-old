@@ -1,0 +1,11 @@
+language: scala
+scala:
+  - 2.11.2
+before_script:
+  - psql -c 'create database travis_ci_test;' -U postgres
+addons:
+  postgresql: 9.4.1
+services:
+  - postgresql
+env:
+  - JDBC_DATABASE_URL=jdbc:postgres://localhost/travis_ci_test?user=postgres
