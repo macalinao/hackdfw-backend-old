@@ -1,5 +1,7 @@
 # hackdfw-backend
 
+[![Build Status](https://travis-ci.org/HackDFW/hackdfw-backend.svg)](https://travis-ci.org/HackDFW/hackdfw-backend)
+
 The backend to HackDFW, written in Scala.
 
 ## Building
