@@ -38,7 +38,10 @@ libraryDependencies ++= Seq(
   "com.typesafe.slick" %% "slick" % "3.1.1",
   "com.github.tminglei" %% "slick-pg" % "0.10.2",
   "com.github.tminglei" %% "slick-pg_json4s" % "0.10.2",
-  "org.json4s" %% "json4s-jackson" % "3.2.11",
+
+  "org.json4s" %% "json4s-ast" % "3.2.10",
+  "org.json4s" %% "json4s-core" % "3.2.10",
+  "org.json4s" %% "json4s-jackson" % "3.2.10",
 
   "com.twitter.inject" %% "inject-server" % versions.finatra % "test",
   "com.twitter.inject" %% "inject-app" % versions.finatra % "test",

@@ -16,5 +16,4 @@ class ApplicationStartupTest extends FeatureTest {
       server.assertAppStarted()
     }
   }
-
 }

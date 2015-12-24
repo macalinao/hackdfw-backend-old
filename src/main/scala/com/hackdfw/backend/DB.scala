@@ -1,9 +1,8 @@
 package com.hackdfw.backend
 
-import com.github.tminglei.slickpg.{PgDateSupport, PgJson4sSupport, ExPostgresDriver}
-import org.json4s.JsonAST.JValue
-import slick.driver.PostgresDriver.api._
-import org.json4s.jackson.JsonMethods
+import scala.concurrent.Await
+import scala.concurrent.duration.Duration
+import MyPostgresDriver.api._
 
 object DB {
 
@@ -11,19 +10,18 @@ object DB {
 
   val connection = Database.forURL(url, driver = "org.postgresql.Driver")
 
+  def create(): Unit = {
+    val result = DB.connection.run(DBIO.seq(
+      models.schema.create
+    ))
+    Await.result(result, Duration.Inf)
+  }
+
+  def drop(): Unit = {
+    val result = DB.connection.run(DBIO.seq(
+      models.schema.drop
+    ))
+    Await.result(result, Duration.Inf)
+  }
+
 }
-
-trait MyPostgresDriver extends ExPostgresDriver
-  with PgJson4sSupport with PgDateSupport {
-
-  def pgjson = "jsonb"
-  type DOCType = JValue
-  val jsonMethods = JsonMethods
-  override val api = MyAPI
-
-  object MyAPI extends API
-    with JsonImplicits with DateTimeImplicits
-
-}
-
-object MyPostgresDriver extends MyPostgresDriver
