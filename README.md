@@ -4,6 +4,8 @@
 
 The backend to HackDFW, written in Scala.
 
+**Note: this isn't being used anymore.**
+
 ## Building
 
 First, you need Scala and SBT installed. Then, run the following command:
